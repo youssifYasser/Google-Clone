@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { XMarkIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline'
@@ -9,7 +8,7 @@ import HeaderOptions from './HeaderOptions'
 
 const Header = () => {
   const router = useRouter()
-  const [searchInput, setSearchInput] = useState('')
+  const [searchInput, setSearchInput] = useState(router.query.term)
 
   const handleSearch = (e) => {
     e.preventDefault()
@@ -23,15 +22,14 @@ const Header = () => {
   return (
     <header className='sticky top-0 bg-white border-b-[1px] border-gray-300 shadow-md'>
       <div className='flex items-center w-full p-4 sm:p-6'>
-        <Link href='/'>
-          <Image
-            src='/google_logo.webp'
-            alt='google logo'
-            width={120}
-            height={40}
-            className='object-cover cursor-pointer'
-          />
-        </Link>
+        <Image
+          src='/google_logo.webp'
+          alt='google logo'
+          width={120}
+          height={40}
+          onClick={() => router.push('/')}
+          className='object-cover cursor-pointer'
+        />
 
         <form className='flex flex-grow items-center rounded-full border border-gray-300 hover:shadow-md focus-within:shadow-md px-6 py-3 ml-10 mr-5 max-w-2xl group'>
           <MagnifyingGlassIcon className='hidden group-focus-within:inline-flex h-6 mr-3 text-gray-500' />
