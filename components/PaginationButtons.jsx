@@ -8,7 +8,7 @@ const PaginationButtons = () => {
   const pageIndex = Number(router.query.start) || 0
 
   return (
-    <div className='flex justify-around max-w-lg mb-10 text-blue-700'>
+    <div className='flex justify-around max-w-lg mb-10 text-blue-700 dark:text-blue-300'>
       {pageIndex >= 10 && (
         <Link
           href={`/search?term=${router.query.term}&start=${pageIndex - 10}`}

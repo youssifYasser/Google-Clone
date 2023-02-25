@@ -1,3 +1,4 @@
+import { useTheme } from 'next-themes'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Header from '../components/SearchHeader'
@@ -5,6 +6,10 @@ import SearchResults from '../components/SearchResults'
 import Response from '../dummy_response'
 
 const Search = ({ searchResults }) => {
+  const { systemTheme, theme, setTheme } = useTheme()
+
+  const currentTheme = theme === 'system' ? systemTheme : theme
+
   const router = useRouter()
   return (
     <>
@@ -13,7 +18,7 @@ const Search = ({ searchResults }) => {
       </Head>
 
       <main>
-        <Header />
+        <Header currentTheme={currentTheme} />
         <SearchResults searchResults={searchResults} />
       </main>
     </>
@@ -23,7 +28,7 @@ const Search = ({ searchResults }) => {
 export default Search
 
 export const getServerSideProps = async (context) => {
-  const useDummyData = false
+  const useDummyData = true
   const startIndex = context.query.start || '0'
 
   const searchData = useDummyData
