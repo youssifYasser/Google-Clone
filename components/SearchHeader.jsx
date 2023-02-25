@@ -21,23 +21,23 @@ const Header = () => {
 
   return (
     <header className='sticky top-0 bg-white border-b-[1px] border-gray-300 shadow-md'>
-      <div className='flex items-center w-full p-4 sm:p-6'>
+      <div className='grid grid-cols-3 gap-y-3 grid-flow-row-dense  sm:flex items-center w-full p-4 sm:p-6'>
         <Image
           src='/google_logo.webp'
           alt='google logo'
           width={120}
           height={40}
           onClick={() => router.push('/')}
-          className='object-cover cursor-pointer'
+          className='object-cover cursor-pointer col-span-2 place-self-end'
         />
 
-        <form className='flex flex-grow items-center rounded-full border border-gray-300 hover:shadow-md focus-within:shadow-md px-6 py-3 ml-10 mr-5 max-w-2xl group'>
+        <form className='col-span-3 place-self-auto flex flex-grow items-center rounded-full border border-gray-300 hover:shadow-md focus-within:shadow-md px-6 py-3 mx-3 sm:ml-10 sm:mr-5 max-w-2xl group'>
           <MagnifyingGlassIcon className='hidden group-focus-within:inline-flex h-6 mr-3 text-gray-500' />
           <input
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
             type='text'
-            className='text-sm sm:text-base py-[2.5px] flex-grow w-full focus:outline-none'
+            className='text-sm sm:text-base sm:py-[2.5px] flex-grow w-full focus:outline-none'
           />
           <XMarkIcon
             className={`${
@@ -58,6 +58,7 @@ const Header = () => {
             />
           </button>
         </form>
+
         <Image
           src={profileImg}
           alt='profile pic'
