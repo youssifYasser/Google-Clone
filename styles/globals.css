@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  p {
+    @apply pointer-events-none sm:pointer-events-auto;
+  }
+}
+
 @layer components {
   .link {
     @apply cursor-pointer hover:underline;
