@@ -22,7 +22,7 @@ const Header = ({ currentTheme }) => {
   }
 
   return (
-    <header className='sticky top-0 z-50 bg-white dark:bg-[#121212] border-b-[1px] border-gray-300 dark:border-[#3b3b3b] shadow-md dark:shadow-[#1a1a1a]'>
+    <header className='sticky top-0 z-50 bg-white dark:bg-[#121212] shadow-md dark:shadow-[#1a1a1a]'>
       <div className='grid grid-cols-3 gap-y-3 grid-flow-row-dense sm:flex sm:items-center w-full p-4 sm:p-6'>
         <Image
           src={

@@ -10,7 +10,7 @@ import {
 
 const HeaderOptions = () => {
   return (
-    <div className='flex justify-around items-start w-full text-gray-700 dark:text-[#9aa0a6] text-sm lg:text-base lg:justify-start lg:space-x-36 lg:pl-52'>
+    <div className='flex justify-around items-start w-full text-gray-700 dark:text-[#9aa0a6] text-sm lg:text-base lg:justify-start lg:space-x-36 lg:pl-52 border-b-[1px] border-gray-300 dark:border-[#3b3b3b] '>
       <div className='flex space-x-6'>
         <HeaderOption Icon={MagnifyingGlassIcon} title='all' selected />
         <HeaderOption Icon={PhotoIcon} title='images' />
