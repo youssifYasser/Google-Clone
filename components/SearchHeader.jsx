@@ -37,8 +37,10 @@ const Header = ({ currentTheme }) => {
           className='object-cover cursor-pointer col-span-1 col-start-2 place-self-center'
         />
 
-        <form className='col-span-3 flex flex-grow items-center rounded-full border border-gray-300 dark:border-[#3b3b3b] hover:shadow-md focus-within:shadow-md dark:shadow-[#1a1a1a] px-6 py-3 mx-3 sm:ml-10 sm:mr-5 max-w-2xl group'>
-          <MagnifyingGlassIcon className='hidden group-focus-within:inline-flex h-6 mr-3 text-gray-500 dark:text-gray-400' />
+        <form className='col-span-3 flex flex-grow items-center rounded-full border border-gray-300 dark:border-[#3b3b3b] hover:shadow-md focus-within:shadow-md dark:shadow-[#1a1a1a] px-6 py-3 mx-3 sm:ml-10 sm:mr-5 max-w-2xl group dark:hover:border-transparent dark:hover:bg-[#3b3b3b] dark:focus-within:border-transparent dark:focus-within:bg-[#3b3b3b]'>
+          <div className='hidden group-focus-within:inline-flex mr-1 sm:mr-2 md:mr-3'>
+            <MagnifyingGlassIcon className=' h-5 text-gray-500 dark:text-gray-400' />
+          </div>
           <input
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
@@ -46,29 +48,33 @@ const Header = ({ currentTheme }) => {
             placeholder='Search...'
             className='text-sm sm:text-base  flex-grow w-full focus:outline-none bg-transparent dark:text-[#9aa0a6]'
           />
-          <XMarkIcon
+          <div
             className={`${
-              searchInput ? 'opacity-100' : 'opacity-0 pointer-events-none'
-            } h-5 text-gray-500 dark:text-gray-400 mr-1 sm:mr-3 transition-transform duration-100 ease-out hover:scale-110 cursor-pointer`}
+              searchInput ? 'inline-flex' : 'hidden'
+            } mr-1 sm:mr-2 md:mr-3 transition-transform duration-100 ease-out hover:scale-110 cursor-pointer`}
             onClick={() => setSearchInput('')}
-          />
-          <MicrophoneIcon
-            className={`hidden sm:inline-flex h-5 text-blue-500 dark:text-blue-600 pl-4 ${
-              searchInput && ' border-l-2 border-gray-300'
-            } mr-3`}
-          />
-          <button type='submit' onClick={handleSearch}>
-            <MagnifyingGlassIcon
-              className={`h-5  pl-1 ${
-                searchInput && 'border-l-2 border-gray-300'
-              } sm:border-none text-blue-500 dark:text-blue-600`}
+          >
+            <XMarkIcon className={`h-5 text-gray-500 dark:text-gray-400 `} />
+          </div>
+          <div
+            className={`${
+              searchInput && 'border-l-2 border-gray-300 pl-1 sm:pl-2 md:pl-3'
+            } flex sm:space-x-3 items-center`}
+          >
+            <MicrophoneIcon
+              className={`hidden sm:inline-flex h-5 text-blue-500 dark:text-blue-600`}
             />
-          </button>
+            <button type='submit' onClick={handleSearch}>
+              <MagnifyingGlassIcon
+                className={`h-5 text-blue-500 dark:text-blue-600`}
+              />
+            </button>
+          </div>
         </form>
 
         <button
           type='button'
-          className='col-start-1 col-span-1 place-self-start sm:ml-auto hover:bg-gray-100 text-gray-700 dark:text-inherit dark:hover:bg-black rounded-md border-2 border-[#3b3b3b] p-1 sm:p-2 transition-all duration-150 group'
+          className='col-start-1 col-span-1 place-self-start sm:ml-auto hover:bg-gray-100 text-gray-700 dark:text-inherit dark:hover:bg-black rounded-full border-2 border-[#3b3b3b] p-1 sm:p-2 transition-all duration-150 group'
           onClick={() =>
             currentTheme === 'dark' ? setTheme('light') : setTheme('dark')
           }

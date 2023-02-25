@@ -9,7 +9,7 @@ const Header = ({ currentTheme }) => {
     <header className='p-3 w-full flex items-center justify-between'>
       <button
         type='button'
-        className='hover:bg-gray-100 text-gray-700 dark:text-inherit dark:hover:bg-black rounded-md border-2 border-[#3b3b3b] p-1 sm:p-2 transition-all duration-150 group'
+        className='hover:bg-gray-100 text-gray-700 dark:text-inherit dark:hover:bg-black rounded-full border-2 border-[#3b3b3b] p-1 sm:p-2 transition-all duration-150 group'
         onClick={() =>
           currentTheme === 'dark' ? setTheme('light') : setTheme('dark')
         }

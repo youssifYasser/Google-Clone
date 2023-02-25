@@ -31,7 +31,7 @@ const Body = ({ currentTheme }) => {
         alt='google logo'
       />
 
-      <div className='flex px-5 py-3 mt-5 w-full border border-gray-300 dark:border-[#3b3b3b] items-center max-w-md sm:max-w-xl  hover:shadow-md focus-within:shadow-md dark:shadow-[#1a1a1a] transition-shadow duration-100 rounded-full'>
+      <div className='flex px-5 py-3 mt-5 w-full border border-gray-300 dark:border-[#3b3b3b] items-center max-w-md sm:max-w-xl  hover:shadow-md focus-within:shadow-md dark:shadow-[#1a1a1a] transition-shadow duration-100 rounded-full dark:hover:border-transparent dark:hover:bg-[#3b3b3b] dark:focus-within:border-transparent dark:focus-within:bg-[#3b3b3b]'>
         <MagnifyingGlassIcon className='h-5 mr-3 text-gray-500 dark:text-gray-400' />
         <input
           value={searchInput}
