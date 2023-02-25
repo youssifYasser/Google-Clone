@@ -2,11 +2,13 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { XMarkIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline'
-import { MicrophoneIcon } from '@heroicons/react/24/solid'
+import { MicrophoneIcon, MoonIcon, SunIcon } from '@heroicons/react/24/solid'
 import profileImg from '../public/profile.jpg'
 import HeaderOptions from './HeaderOptions'
+import { useTheme } from 'next-themes'
 
 const Header = ({ currentTheme }) => {
+  const { setTheme } = useTheme()
   const router = useRouter()
   const [searchInput, setSearchInput] = useState(router.query.term)
 
@@ -21,7 +23,7 @@ const Header = ({ currentTheme }) => {
 
   return (
     <header className='sticky top-0 z-50 bg-white dark:bg-[#121212] border-b-[1px] border-gray-300 dark:border-[#3b3b3b] shadow-md dark:shadow-[#1a1a1a]'>
-      <div className='grid grid-cols-3 gap-y-3 grid-flow-row-dense  sm:flex items-center w-full p-4 sm:p-6'>
+      <div className='grid grid-cols-3 gap-y-3 grid-flow-row-dense sm:flex sm:items-center w-full p-4 sm:p-6'>
         <Image
           src={
             currentTheme === 'dark'
@@ -32,10 +34,10 @@ const Header = ({ currentTheme }) => {
           width={120}
           height={40}
           onClick={() => router.push('/')}
-          className='object-cover cursor-pointer col-span-2 place-self-end'
+          className='object-cover cursor-pointer col-span-1 col-start-2 place-self-center'
         />
 
-        <form className='col-span-3 place-self-auto flex flex-grow items-center rounded-full border border-gray-300 dark:border-[#3b3b3b] hover:shadow-md focus-within:shadow-md dark:shadow-[#1a1a1a] px-6 py-3 mx-3 sm:ml-10 sm:mr-5 max-w-2xl group'>
+        <form className='col-span-3 flex flex-grow items-center rounded-full border border-gray-300 dark:border-[#3b3b3b] hover:shadow-md focus-within:shadow-md dark:shadow-[#1a1a1a] px-6 py-3 mx-3 sm:ml-10 sm:mr-5 max-w-2xl group'>
           <MagnifyingGlassIcon className='hidden group-focus-within:inline-flex h-6 mr-3 text-gray-500 dark:text-gray-400' />
           <input
             value={searchInput}
@@ -64,10 +66,24 @@ const Header = ({ currentTheme }) => {
           </button>
         </form>
 
+        <button
+          type='button'
+          className='col-start-1 col-span-1 place-self-start sm:ml-auto hover:bg-gray-100 text-gray-700 dark:text-inherit dark:hover:bg-black rounded-md border-2 border-[#3b3b3b] p-1 sm:p-2 transition-all duration-150 group'
+          onClick={() =>
+            currentTheme === 'dark' ? setTheme('light') : setTheme('dark')
+          }
+        >
+          {currentTheme === 'dark' ? (
+            <SunIcon className='h-7 sm:h-8 group-active:scale-90 transition-all duration-150' />
+          ) : (
+            <MoonIcon className='h-7 sm:h-8 group-active:scale-90 transition-all duration-150' />
+          )}
+        </button>
+
         <Image
           src={profileImg}
           alt='profile pic'
-          className='h-10 w-10 ml-auto rounded-full cursor-pointer transition-transform duration-150 ease-out hover:scale-110'
+          className='h-10 w-10 sm:ml-5 rounded-full cursor-pointer transition-transform duration-150 ease-out hover:scale-110 col-span-1 place-self-end sm:place-self-auto'
         />
       </div>
 
