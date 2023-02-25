@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <main className='flex flex-col items-center justify-center h-screen'>
-      <Header />
+      <Header currentTheme={currentTheme} />
       <Body currentTheme={currentTheme} />
       <Footer />
     </main>
